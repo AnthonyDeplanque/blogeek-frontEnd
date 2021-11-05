@@ -129,6 +129,56 @@ const theme = createTheme(adaptV4Theme({
         },
       },
     },
+    MuiInput: {
+      root: {
+        border: `1px thin ${primaryContrastTextColor}`,
+        borderRadius: "11px",
+        borderColor: primaryContrastTextColor,
+
+      },
+    },
+    MuiOutlinedInput: {
+      root: {
+        border: `1px thin ${primaryContrastTextColor}`,
+        borderRadius: "11px",
+        borderColor: primaryContrastTextColor,
+        position: 'relative',
+        '& $notchedOutline': {
+          borderColor: primaryContrastTextColor,
+        },
+        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
+          borderColor: primaryContrastTextColor,
+          // Reset on touch devices, it doesn't add specificity
+          '@media (hover: none)': {
+            borderColor: secondaryContrastTextColor,
+          },
+        },
+        '&$focused $notchedOutline': {
+          borderColor: primaryColor,
+        },
+      },
+    },
+    MuiSelect: {
+
+      iconOutlined: {
+        color: secondaryContrastTextColor
+      },
+      root: {
+        borderRadius: "11px",
+        color: secondaryContrastTextColor
+      }
+    },
+    MuiFormLabel: {
+      root: {
+        borderRadius: "11px",
+        color:
+          secondaryContrastTextColor
+        ,
+        '&$focused': {
+          color: primaryColor
+        }
+      }
+    },
   }
 }
 ));

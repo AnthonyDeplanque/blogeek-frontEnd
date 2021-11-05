@@ -1,10 +1,10 @@
 
 import { Box } from '@mui/system';
-import { useTheme } from '@mui/material';
+import { BoxProps, useTheme } from '@mui/material';
 import React from 'react';
 import { cardRadius } from '../theme/Theme';
 import HeaderMainCard from './HeaderMainCard';
-interface MainCardProps {
+interface MainCardProps extends BoxProps {
   title?: string;
   style?: any;
 }

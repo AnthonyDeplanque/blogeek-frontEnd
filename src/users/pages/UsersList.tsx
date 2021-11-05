@@ -6,7 +6,7 @@ import { useTypedSelector } from "../../redux/rootReducer"
 import RootState from "../../redux/rootState"
 import UserLine from "../components/UserLine"
 import usersActions from "../redux/usersActions"
-import { Users } from "../../models/Users"
+import { Users } from '../../Blogeek-library/models/Users';
 import { useTheme } from "@mui/material"
 import Loading from "../../common/components/Loading"
 

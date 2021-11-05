@@ -1,4 +1,4 @@
-import { Users } from "../../models/Users";
+import { Users } from '../../Blogeek-library/models/Users';
 
 export const GET_AUTH = "GET_AUTH";
 export const GET_AUTH_SUCCESS = "GET_AUTH_SUCCESS";

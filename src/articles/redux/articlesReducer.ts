@@ -1,5 +1,5 @@
 import ArticlesState from "../models/articleState";
-import { ArticlesActionsType, GET_ARTICLES_SUCCESS, GET_ARTICLES_FAILURE } from "./articlesActions";
+import { ArticlesActionsType, GET_ARTICLES_SUCCESS, POST_ARTICLE_SUCCESS, } from "./articlesActions";
 
 const defaultState: ArticlesState | null = {
   data: undefined
@@ -13,8 +13,8 @@ export const articlesReducer = (state: ArticlesState = defaultState, action: Art
         ...state,
         data: action.payload
       };
-    case GET_ARTICLES_FAILURE:
-      return state;
+    case POST_ARTICLE_SUCCESS:
+      return { ...state, data: [...state.data, action.payload] };
     default:
       return state;
   }

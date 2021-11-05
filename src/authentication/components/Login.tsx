@@ -7,7 +7,8 @@ import authActions from "../redux/authActions";
 import { useTypedSelector } from "../../redux/rootReducer";
 import RootState from "../../redux/rootState";
 import { useEffect } from "react";
-import { Users } from "../../models/Users";
+import { Users } from '../../Blogeek-library/models/Users';
+import { useHistory } from "react-router";
 
 interface LoginProps { }
 const Login: React.FC<LoginProps> = (props) => {
@@ -17,6 +18,7 @@ const Login: React.FC<LoginProps> = (props) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   let auth = useTypedSelector((state: RootState) => state.authentication.data);
+  const history = useHistory();
 
   const handleSubMit = () => {
     dispatch(authActions.getAuth({ nick_name, password }));
@@ -44,7 +46,7 @@ const Login: React.FC<LoginProps> = (props) => {
                 <Button variant="contained" onClick={handleSubMit}>LogIn !</Button></Box>
             </Box>
           </FormControl >)
-          : (<Box><Typography>Bienvenue, {user?.nick_name}</Typography><Button variant="contained" onClick={handleLogOff}>LogOff !</Button></Box>)
+          : (<Box display="flex" flexDirection="column" alignItems="center" justifyContent="space-around"><Typography style={{ margin: theme.spacing(1) }}>Bienvenue, {user?.nick_name}</Typography><Button style={{ margin: theme.spacing(1) }} variant="contained" onClick={() => history.push("/myProfile/")}>Mon Profil</Button><Button style={{ margin: theme.spacing(1) }} variant="contained" onClick={handleLogOff}>LogOff !</Button></Box>)
       }
     </MainCard >
   )

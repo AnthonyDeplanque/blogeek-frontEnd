@@ -6,7 +6,7 @@ import RootState from "../../redux/rootState";
 import ArticleSummary from "../components/ArticleSummary";
 import articlesActions from "../redux/articlesActions";
 import { useTheme } from '@mui/material';
-import { Articles } from '../../models/Articles';
+import { Articles } from '../../Blogeek-library/models/Articles';
 import Loading from "../../common/components/Loading";
 
 
