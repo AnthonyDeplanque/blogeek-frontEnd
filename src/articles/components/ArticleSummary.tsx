@@ -22,7 +22,7 @@ const ArticleSummary: React.FC<ArticleSummaryProps> = (props) => {
   }, [])
 
   const handleShowFullArticle = (id: string) => {
-    history.push(`articles/${id}`);
+    history.push(`${id}`);
   }
 
   return (<MainCard title={article.title}>

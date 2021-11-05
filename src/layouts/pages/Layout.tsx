@@ -4,10 +4,11 @@ import { Box } from "@mui/system";
 
 import React, { useState } from 'react';
 import Login from "../../authentication/components/Login";
+import Logo from "../../common/theme/Logo";
 import Navbar from "../components/NavBar";
 
 interface LayoutProps { };
-export const topbarHeight = 70
+export const topbarHeight = 90
 const Layout: React.FC<LayoutProps> = (props) => {
   const theme = useTheme();
   const [navBarOpen, setNavBarOpen] = useState<boolean>(false);
@@ -21,7 +22,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
       <Box width="100%" height="100%" display="flex" flexDirection="column" margin={0} padding={0}>
         <Box display="flex" flexDirection="row" alignItems="center" justifyContent="space-between" width="100vw" minHeight={`${topbarHeight}px`} height={`${topbarHeight}px`} style={{ width: "100vw", backgroundColor: theme.palette.primary.dark }} >
           <Box padding={theme.spacing(0, 2, 0, 2)}><Menu fontSize="large" onClick={() => setNavBarOpen(!navBarOpen)} /> </Box>
-          <Box padding={theme.spacing(0, 2, 0, 2)}><Typography variant="h2">BLOGEEK APP</Typography></Box>
+          <Box padding={theme.spacing(0, 2, 0, 2)}><Logo /> </Box>
         </Box>
         <Drawer anchor="left" PaperProps={{
           style: {
