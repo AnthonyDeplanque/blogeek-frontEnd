@@ -1,17 +1,33 @@
-import { Menu } from "@material-ui/icons";
-import { Drawer, Typography, useTheme } from "@mui/material";
+
+import { Drawer } from "@mui/material";
 import { Box } from "@mui/system";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from "react-redux";
+
 import Login from "../../authentication/components/Login";
-import Logo from "../../common/theme/Logo";
+import authActions from "../../authentication/redux/authActions";
+import { useTypedSelector } from "../../redux/rootReducer";
+import RootState from "../../redux/rootState";
+
 import Navbar from "../components/NavBar";
+import TopBar from "../components/TopBar";
 
 interface LayoutProps { };
 export const topbarHeight = 90
 const Layout: React.FC<LayoutProps> = (props) => {
-  const theme = useTheme();
+
   const [navBarOpen, setNavBarOpen] = useState<boolean>(false);
+  const [authOpen, setAuthOpen] = useState<boolean>(false);
+  const authentication = useTypedSelector((state: RootState) => state.authentication.data)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!authentication)
+    {
+      dispatch(authActions.getAuthByToken())
+    }
+  }, [])
 
   const onItemClicked = (path: string) => {
     setNavBarOpen(!navBarOpen);
@@ -20,10 +36,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <Box display="block">
       <Box width="100%" height="100%" display="flex" flexDirection="column" margin={0} padding={0}>
-        <Box display="flex" flexDirection="row" alignItems="center" justifyContent="space-between" width="100vw" minHeight={`${topbarHeight}px`} height={`${topbarHeight}px`} style={{ width: "100vw", backgroundColor: theme.palette.primary.dark }} >
-          <Box padding={theme.spacing(0, 2, 0, 2)}><Menu fontSize="large" onClick={() => setNavBarOpen(!navBarOpen)} /> </Box>
-          <Box padding={theme.spacing(0, 2, 0, 2)}><Logo /> </Box>
-        </Box>
+        <TopBar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} authOpen={authOpen} setAuthOpen={setAuthOpen} />
         <Drawer anchor="left" PaperProps={{
           style: {
             marginTop: `${topbarHeight}px`,
@@ -34,10 +47,22 @@ const Layout: React.FC<LayoutProps> = (props) => {
           }
         }} open={navBarOpen} onClose={() => setNavBarOpen(false)}>
           <Navbar onItemClicked={onItemClicked} />
-        </Drawer><Box display="flex" flexDirection="row" width="100%">
-          <Box display="flex" flexDirection="column" width="80%" alignItems="center" alignSelf="center" justifyContent="center">
+        </Drawer>
+        <Drawer anchor="right" PaperProps={{
+          style: {
+            marginTop: `${topbarHeight}px`,
+            backgroundColor: 'transparent',
+            boxShadow: "none",
+            overflowY: "hidden"
+          }
+        }} open={authOpen} onClose={() => setAuthOpen(false)}>
+          <Login />
+        </Drawer>
+        <Box display="flex" flexDirection="row" width="100%" justifyContent="center">
+          <Box display="flex" flexDirection="column" width="80%" alignItems="center" alignSelf="center" justifyItems="center" >
             {props.children}
-          </Box> <Box width="20%"><Login /></Box>
+          </Box>
+
         </Box>
       </Box>
     </Box>

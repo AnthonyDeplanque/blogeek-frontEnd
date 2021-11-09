@@ -34,20 +34,23 @@ const Login: React.FC<LoginProps> = (props) => {
   return (
 
     <MainCard>
-      {
-        user === null
-          ? (<FormControl>
-            <Box >
+      <FormControl>
+        {
+          user === null
+            ?
+            (
+              <Box >
 
-              <TextField onChange={(e) => setNick_name(e.target.value)} type="text" name="nick_name" style={{ padding: theme.spacing(1), display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }} label="UserName"></TextField>
-              <TextField onChange={(e) => setPassword(e.target.value)} type="password" name="password" style={{ padding: theme.spacing(1), display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }} label="PassWord"></TextField>
+                <TextField onChange={(e) => setNick_name(e.target.value)} variant="outlined" type="text" name="nick_name" style={{ padding: theme.spacing(1), display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }} label="UserName"></TextField>
+                <TextField onChange={(e) => setPassword(e.target.value)} type="password" name="password" style={{ padding: theme.spacing(1), display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }} label="PassWord"></TextField>
 
-              <Box padding={theme.spacing(1)} width="100%" display="flex" flexDirection="row" justifyContent="center">
-                <Button variant="contained" onClick={handleSubMit}>LogIn !</Button></Box>
-            </Box>
-          </FormControl >)
-          : (<Box display="flex" flexDirection="column" alignItems="center" justifyContent="space-around"><Typography style={{ margin: theme.spacing(1) }}>Bienvenue, {user?.nick_name}</Typography><Button style={{ margin: theme.spacing(1) }} variant="contained" onClick={() => history.push("/myProfile/")}>Mon Profil</Button><Button style={{ margin: theme.spacing(1) }} variant="contained" onClick={handleLogOff}>LogOff !</Button></Box>)
-      }
+                <Box padding={theme.spacing(1)} width="100%" display="flex" flexDirection="row" justifyContent="center">
+                  <Button variant="contained" onClick={handleSubMit}>LogIn !</Button></Box>
+              </Box>
+            )
+            : (<Box display="flex" flexDirection="column" alignItems="center" justifyContent="space-around"><Typography style={{ margin: theme.spacing(1) }}>Bienvenue, {user?.nick_name}</Typography><Button style={{ margin: theme.spacing(1) }} variant="contained" onClick={() => history.push("/myProfile/")}>Mon Profil</Button><Button style={{ margin: theme.spacing(1) }} variant="contained" onClick={handleLogOff}>LogOff !</Button></Box>)
+        }
+      </FormControl >
     </MainCard >
   )
 

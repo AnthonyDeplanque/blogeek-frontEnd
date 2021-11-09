@@ -17,6 +17,7 @@ const secondaryContrastTextColor = "#FAFAFA";
 
 export const lightBackgroundColor = "#FAFAFA";
 export const darkBackgroundColor = "#272727"; //eerie black
+export const lightDarkBackgroundColor = '#575757';
 
 /*
 --royal-purple: #7F55A6;

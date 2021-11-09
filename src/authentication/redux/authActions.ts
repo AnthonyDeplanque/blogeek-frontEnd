@@ -3,6 +3,7 @@ import { Users } from '../../Blogeek-library/models/Users';
 export const GET_AUTH = "GET_AUTH";
 export const GET_AUTH_SUCCESS = "GET_AUTH_SUCCESS";
 export const GET_AUTH_FAILURE = "GET_AUTH_FAILURE";
+export const GET_AUTH_BY_TOKEN = "GET_AUTH_BY_TOKEN";
 export const SET_NO_AUTH = "SET_NO_AUTH";
 export const SET_NO_AUTH_SUCCESS = "SET_NO_AUTH_SUCCESS";
 export const SET_NO_AUTH_FAILURE = "SET_NO_AUTH_FAILURE";
@@ -32,11 +33,15 @@ export interface setNoAuthFailureAction {
   type: typeof SET_NO_AUTH_FAILURE,
 };
 
+export interface getAuthByTokenAction {
+  type: typeof GET_AUTH_BY_TOKEN,
+}
 
 export type AuthActionType =
   getAuthAction |
   getAuthSuccessAction |
   getAuthFailureAction |
+  getAuthByTokenAction |
   setNoAuthAction |
   setNoAuthSuccessAction |
   setNoAuthFailureAction;
@@ -59,6 +64,12 @@ export const authActions = {
       type: GET_AUTH_FAILURE
     }
   }),
+  getAuthByToken: ((): getAuthByTokenAction => {
+    return {
+      type: GET_AUTH_BY_TOKEN
+    }
+  }),
+
   setNoAuth: ((): setNoAuthAction => {
     return {
       type: SET_NO_AUTH
