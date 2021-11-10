@@ -1,9 +1,10 @@
-interface LogoProps { };
+interface LogoProps { mobile: boolean };
 const Logo: React.FC<LogoProps> = (props) => {
+  const { mobile } = props
 
   return <svg
-    width="349.99999999999994"
-    height="70.71514505120916"
+    width={mobile ? "175" : "350"}
+    height={mobile ? "35" : "70"}
     viewBox="0 0 349.99999999999994 70.71514505120916"
     className="css-1j8o68f">
     <defs id="SvgjsDefs1806">

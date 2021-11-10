@@ -1,15 +1,15 @@
 
-import { Drawer } from "@mui/material";
-import { Box } from "@mui/system";
+import { Drawer, useMediaQuery, useTheme } from "@mui/material";
+import { Box, breakpoints } from "@mui/system";
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 
-import Login from "../../authentication/components/Login";
+import Login from "../components/Login";
 import authActions from "../../authentication/redux/authActions";
 import { useTypedSelector } from "../../redux/rootReducer";
 import RootState from "../../redux/rootState";
-
+import '../../common/assets/style.css';
 import Navbar from "../components/NavBar";
 import TopBar from "../components/TopBar";
 
@@ -21,7 +21,9 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const [authOpen, setAuthOpen] = useState<boolean>(false);
   const authentication = useTypedSelector((state: RootState) => state.authentication.data)
   const dispatch = useDispatch();
+  const theme = useTheme();
 
+  const mobile: boolean = useMediaQuery(theme.breakpoints.down("md"));
   useEffect(() => {
     if (!authentication)
     {
@@ -34,9 +36,8 @@ const Layout: React.FC<LayoutProps> = (props) => {
   };
 
   return (
-    <Box display="block">
-      <Box width="100%" height="100%" display="flex" flexDirection="column" margin={0} padding={0}>
-        <TopBar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} authOpen={authOpen} setAuthOpen={setAuthOpen} />
+    <Box display="block" width="100vw">
+      <Box width="100%" height="100%" marginTop={topbarHeight} display="flex" flexDirection="column" margin={0} padding={0}>
         <Drawer anchor="left" PaperProps={{
           style: {
             marginTop: `${topbarHeight}px`,
@@ -58,12 +59,13 @@ const Layout: React.FC<LayoutProps> = (props) => {
         }} open={authOpen} onClose={() => setAuthOpen(false)}>
           <Login />
         </Drawer>
+        <Box position="fixed"><TopBar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} authOpen={authOpen} setAuthOpen={setAuthOpen} mobile={mobile} /></Box>
         <Box display="flex" flexDirection="row" width="100%" justifyContent="center">
           <Box display="flex" flexDirection="column" width="80%" alignItems="center" alignSelf="center" justifyItems="center" >
             {props.children}
           </Box>
-
         </Box>
+
       </Box>
     </Box>
   )

@@ -22,7 +22,7 @@ const UsersList: React.FC<UsersListProps> = (props) => {
 
   return (
     data && data.length ?
-      (<MainCard title="Liste des utilisateurs">
+      (<MainCard title="Utilisateurs">
 
         {data.map((user: Users, index) => {
           return (<>
