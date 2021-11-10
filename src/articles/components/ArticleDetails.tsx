@@ -29,18 +29,29 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
 
   }, [id])
 
-  return (<><MainCard title={`${selectedArticle.title}`}>
+  return (
+    <MainCard style={{ minHeight: "80vh" }} title={`${selectedArticle.title}`}>
+      <Box style={{ padding: theme.spacing(3), height: '100%' }} display="flex" flexDirection="column" justifyContent="space-between" alignItems="space-between">
+        <Box padding={theme.spacing(1, 0, 1, 0)}>
+          <Typography variant="h5">{selectedArticle.subtitle}</Typography>
+        </Box >
+        <Box display="flex" flexDirection="row" >
+          <Typography style={{ padding: theme.spacing(1, 0, 1, 5) }}>{formatDate(selectedArticle.date_of_write)}
+          </Typography>
 
-    <Box style={{ padding: theme.spacing(1) }}>
-      <Typography>{selectedArticle.subtitle}</Typography>
-    </Box >
-    <Box display="flex" flexDirection="row" ><Typography style={{ padding: theme.spacing(1) }}>{formatDate(selectedArticle.date_of_write)}</Typography>
-      {selectedArticle.creator && <Typography style={{ padding: theme.spacing(1) }}>Par  {selectedArticle.creator.nick_name}</Typography>}
-    </Box>
-    <Box><Typography>{selectedArticle.content}</Typography></Box>
-  </MainCard>
-    <Button variant="contained" onClick={() => history.push('/articles')} > Retour</Button>
-  </>)
+          {selectedArticle.creator && <Typography style={{ padding: theme.spacing(1, 0, 1, 1) }}>Par {selectedArticle.creator.nick_name}</Typography>}
+        </Box>
+
+        <Box padding={theme.spacing(2, 0, 2, 0)}>
+          <Typography>{selectedArticle.content}</Typography>
+        </Box>
+
+        <Box display="flex" flexDirection="row" justifyContent="flex-end">
+          <Button variant="contained" onClick={() => history.push('/articles')} > Retour</Button>
+        </Box>
+      </Box>
+    </MainCard>
+  )
 }
 
 export default ArticleDetails;
