@@ -5,19 +5,22 @@ import { red } from "@material-ui/core/colors";
 export const BULLET = `•`;
 export const cardRadius = 20;
 
+export const navBarBackgroundRadius = "40px";
+
 const primaryColor = "#A13E5F";
 const primaryLightColor = "#D25482";
 const primaryDarkColor = "#89324D";
 const primaryContrastTextColor = "#FAFAFA";
 
-const secondaryColor = "#115689";
-const secondaryLightColor = "#449CBF";
-const secondaryDarcColor = "#013554";
+const secondaryColor = "#009710";
+const secondaryLightColor = "#00CC15";
+const secondaryDarkColor = "#006F0D";
 const secondaryContrastTextColor = "#FAFAFA";
 
 export const lightBackgroundColor = "#FAFAFA";
 export const darkBackgroundColor = "#272727"; //eerie black
-export const lightDarkBackgroundColor = '#575757';
+export const lightDarkBackgroundColor = '#474747';
+export const darkerBackgroundColor = "#1A1A1A";
 
 /*
 --royal-purple: #7F55A6;
@@ -42,6 +45,7 @@ export const lightDarkBackgroundColor = '#575757';
 
 const theme = createTheme(adaptV4Theme({
 
+
   palette: {
     text: {
       primary: primaryContrastTextColor,
@@ -57,21 +61,25 @@ const theme = createTheme(adaptV4Theme({
     secondary: {
       main: secondaryColor,
       light: secondaryLightColor,
-      dark: secondaryDarcColor,
+      dark: secondaryDarkColor,
       contrastText: secondaryContrastTextColor,
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: darkBackgroundColor,
-      paper: darkBackgroundColor
+      default: darkerBackgroundColor,
+      paper: darkerBackgroundColor
     },
   },
+
   overrides: {
     MuiTypography: {
       root: {
-        fontFamily: "Roboto"
+        fontFamily: [
+          'Mochiy Pop P One',
+          'sans-serif',
+        ].join(','),
       },
       h1: {
         fontSize: 36,
@@ -110,13 +118,11 @@ const theme = createTheme(adaptV4Theme({
     MuiCard: {
       root: {
         borderRadius: cardRadius,
-        // boxShadow: '0px 5px 6px rgba(0, 0, 0, 0.04)',
       },
     },
     MuiButton: {
       root: {
         borderRadius: cardRadius,
-        // boxShadow: '0px 5px 6px rgba(0, 0, 0, 0.04)',
         paddingTop: '0px !important',
         paddingBottom: '0px !important',
       },
@@ -184,94 +190,4 @@ const theme = createTheme(adaptV4Theme({
 }
 ));
 
-export const darkTheme = createTheme(adaptV4Theme({
-  overrides: {
-    MuiOutlinedInput: {
-      root: {
-        position: 'relative',
-        '& $notchedOutline': {
-          borderColor: theme.palette.secondary.contrastText,
-        },
-        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
-          borderColor: theme.palette.primary.contrastText,
-          // Reset on touch devices, it doesn't add specificity
-          '@media (hover: none)': {
-            borderColor: theme.palette.secondary.contrastText,
-          },
-        },
-        '&$focused $notchedOutline': {
-          borderColor: theme.palette.primary.main,
-        },
-      },
-    },
-    MuiSelect: {
-      iconOutlined: {
-        color: theme.palette.secondary.contrastText
-      },
-      root: {
-        color: theme.palette.secondary.contrastText
-      }
-    },
-    MuiFormLabel: {
-      root: {
-        color:
-          theme.palette.secondary.contrastText
-        ,
-        '&$focused': {
-          color: theme.palette.primary.main
-        }
-      }
-    },
-    MuiSvgIcon: {
-      root: {
-        color: theme.palette.secondary.contrastText
-      }
-    },
-    MuiFormControl: {
-      root: {
-        color: theme.palette.primary.main
-      }
-    },
-    MuiFormControlLabel: {
-      root: {
-        color: theme.palette.primary.main
-      }
-    },
-    MuiTextField: {
-      root: {
-        color: theme.palette.secondary.contrastText,
-        '&$focused': {
-          color: theme.palette.secondary.contrastText
-        },
-        "&:hover .MuiInputAdornment-root .MuiSvgIcon-root": {
-          color: theme.palette.secondary.contrastText
-        },
-        "&.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root": {
-          color: theme.palette.secondary.contrastText
-        }
-      }
-    },
-    MuiInputBase: {
-      root: {
-        color: theme.palette.secondary.contrastText,
-      }
-    },
-    MuiTypography: {
-      root: {
-        color: theme.palette.secondary.contrastText,
-      }
-    },
-    MuiInputAdornment: {
-      root: {
-        color: theme.palette.secondary.contrastText,
-      }
-    },
-    MuiIcon: {
-      root: {
-        color: theme.palette.secondary.contrastText,
-      }
-    }
-
-  }
-}));
 export default theme;
