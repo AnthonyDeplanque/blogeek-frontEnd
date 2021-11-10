@@ -29,7 +29,7 @@ function* postArticleIntoDatabase(action: postArticleAction) {
   {
     let { data } = yield call(postApi, 'articles', action.payload);
     console.log(data);
-    yield put(articlesActions.postArticleSuccess(data));
+    yield put(articlesActions.postArticleSuccess(data.newArticle));
   }
   catch (error)
   {

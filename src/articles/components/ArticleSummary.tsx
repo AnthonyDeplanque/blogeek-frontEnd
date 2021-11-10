@@ -29,7 +29,7 @@ const ArticleSummary: React.FC<ArticleSummaryProps> = (props) => {
           <Typography variant="h3">{article.subtitle}</Typography>
           <Box padding={theme.spacing(1)} display="flex" flexDirection="row" justifyContent="space-between" ><Typography variant="subtitle1">{formatDate(article.date_of_write)}</Typography> <Typography> par {article.creator?.nick_name}</Typography></Box>
           <Box padding={theme.spacing(1)}><Typography variant="body1" style={{ textOverflow: "ellipsis", wordWrap: "break-word", overflow: "hidden", height: "10rem" }}>{article.content}</Typography></Box>
-          <Box padding={theme.spacing(1)} display="flex" flexDirection="row" justifyContent="space-between" >
+          <Box padding={theme.spacing(1)} display="flex" flexDirection="row" justifyContent="flex-end" >
             <Button onClick={() => handleShowFullArticle(article.id)} variant='contained'>Voir la suite</Button>
           </Box>
         </Box>)}

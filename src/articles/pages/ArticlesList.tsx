@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../redux/rootReducer";
 import RootState from "../../redux/rootState";
@@ -15,10 +15,12 @@ const ArticlesList: React.FC<ArticlesListProps> = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const { data } = useTypedSelector((state: RootState) => state.articles);
+  const [articles, setArticles] = useState<Articles>(data)
   useEffect(() => {
     if (!data)
     {
       dispatch(articlesActions.getArticles());
+      setArticles(data);
     }
   }, [data]);
 
