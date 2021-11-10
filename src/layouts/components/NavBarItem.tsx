@@ -110,7 +110,7 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ item, level }) => {
                     ? level === 0
                         //todo : change the string to a const
                         ? {
-                            backgroundColor: theme.palette.secondary.light,
+                            background: `linear-gradient(0.65turn,${theme.palette.secondary.dark},${theme.palette.secondary.light})`,
                             borderRadius: "0 20px 20px 0"
                         } : {
                             paddingTop: "1px",
@@ -137,7 +137,7 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ item, level }) => {
                         <Box style={
                             isSelected && level !== 0
                                 ? {
-                                    backgroundColor: theme.palette.secondary.light,
+                                    background: `linear-gradient(0.65turn,${theme.palette.secondary.dark},${theme.palette.secondary.light})`,
                                     borderRadius: "15px",
                                     padding: theme.spacing(0, 2, 0, 2)
                                 } : {
@@ -149,8 +149,8 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ item, level }) => {
                                 variant="body2"
                                 style={
                                     level === 0
-                                        ? { color: theme.palette.primary.contrastText, fontWeight: "bold", textShadow: `0px 0px 6px ${theme.palette.background.default}` }
-                                        : { color: theme.palette.primary.contrastText, fontWeight: "normal", textShadow: `0px 0px 6px ${theme.palette.background.default}` }
+                                        ? { color: theme.palette.primary.contrastText, fontWeight: "bold", textShadow: `0px 0px 10px black` }
+                                        : { color: theme.palette.primary.contrastText, fontWeight: "normal", textShadow: `0px 0px 10px black` }
                                 }>
                                 {item.title}
                             </Typography>

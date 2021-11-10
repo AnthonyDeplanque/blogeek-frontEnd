@@ -1,6 +1,7 @@
 
 import { Box, List, useTheme } from '@mui/material';
 import React from 'react';
+import { darkBackgroundColor, lightDarkBackgroundColor, navBarBackgroundRadius } from '../../common/theme/Theme';
 import RoutesConfig from '../models/RoutesConfig';
 import { topbarHeight } from '../pages/Layout';
 import NavBarItem from './NavBarItem';
@@ -10,20 +11,20 @@ type LocationNavBarProps = {
     onItemClicked?: (path: string) => void;
 }
 
-export const navBarBackgroundRadius = "0 40px 0 0";
+
 
 const Navbar: React.FC<LocationNavBarProps> = (props) => {
 
     const theme = useTheme();
-
+    const borderRadius = `0 ${navBarBackgroundRadius} 0 0`;
 
     return (
         <Box
             style={{
                 height: `100%`,
                 width: "250px",
-                background: `linear-gradient(0.65turn,${theme.palette.secondary.light},${theme.palette.secondary.dark})`,
-                borderRadius: navBarBackgroundRadius,
+                background: `linear-gradient(0.65turn,${lightDarkBackgroundColor},${darkBackgroundColor})`,
+                borderRadius: borderRadius,
                 paddingBottom: "100px",
                 overflowY: "auto",
                 borderTop: `3px solid ${theme.palette.secondary.dark}`,
