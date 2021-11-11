@@ -9,6 +9,7 @@ import { Articles } from '../../Blogeek-library/models/Articles';
 import { useTypedSelector } from '../../redux/rootReducer';
 import RootState from '../../redux/rootState';
 import { formatDate } from '../../common/services/formatDate';
+import AvatarDisplayer from '../../common/components/AvatarDisplayer';
 
 
 interface ArticleDetailsProps {
@@ -35,11 +36,16 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
         <Box padding={theme.spacing(1, 0, 1, 0)}>
           <Typography variant="h5">{selectedArticle.subtitle}</Typography>
         </Box >
-        <Box display="flex" flexDirection="row" >
-          <Typography style={{ padding: theme.spacing(1, 0, 1, 5) }}>{formatDate(selectedArticle.date_of_write)}
-          </Typography>
 
-          {selectedArticle.creator && <Typography style={{ padding: theme.spacing(1, 0, 1, 1) }}>Par {selectedArticle.creator.nick_name}</Typography>}
+        <Box display="flex" flexDirection="column" >
+
+          {selectedArticle.creator &&
+            <Box display="flex" flexDirection="row" alignItems="center">
+              {selectedArticle.creator.avatar && <AvatarDisplayer littleImage avatar={selectedArticle.creator.avatar} />}
+              <Typography style={{ padding: theme.spacing(1, 0, 1, 1) }}>Par {selectedArticle.creator.nick_name}</Typography>
+            </Box>
+          }
+          <Typography style={{ padding: theme.spacing(1, 0, 1, 5) }}>{formatDate(selectedArticle.date_of_write)}</Typography>
         </Box>
 
         <Box padding={theme.spacing(2, 0, 2, 0)}>

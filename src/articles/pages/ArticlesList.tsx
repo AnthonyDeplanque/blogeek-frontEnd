@@ -24,13 +24,10 @@ const ArticlesList: React.FC<ArticlesListProps> = () => {
     }
   }, [data]);
 
-  return data && data.length
-    ? (<>
-      {data.map((article: Articles) => (
-        <ArticleSummary article={article} />
-      ))}
+  return data && data.length ? data.map((article: Articles) => (
+    <ArticleSummary article={article} />
+  ))
 
-    </>)
     : <Loading />
 
 }
