@@ -1,12 +1,13 @@
 import { all, call, put, takeLatest } from "@redux-saga/core/effects";
-import { postApi } from "../../utils/axiosApi";
-import authActions, { getAuthAction, GET_AUTH, GET_AUTH_BY_TOKEN, setNoAuthAction, SET_NO_AUTH } from "./authActions";
+import { fetchApi, postApi, putApi } from "../../utils/axiosApi";
+import authActions, { getAuthAction, GET_AUTH, GET_AUTH_BY_TOKEN, setNoAuthAction, SET_NO_AUTH, updateProfileAction, UPDATE_PROFILE } from "./authActions";
 
 export function* authSaga() {
   yield all([
     takeLatest(GET_AUTH, getAuthentication),
     takeLatest(SET_NO_AUTH, logOffAuthentication),
-    takeLatest(GET_AUTH_BY_TOKEN, getAuthenticationByToken)
+    takeLatest(GET_AUTH_BY_TOKEN, getAuthenticationByToken),
+    takeLatest(UPDATE_PROFILE, updateProfile),
   ]);
 }
 
@@ -22,7 +23,6 @@ function* getAuthenticationByToken() {
     yield put(authActions.getAuthFailure());
   }
 }
-
 function* getAuthentication(action: getAuthAction) {
   try
   {
@@ -36,6 +36,7 @@ function* getAuthentication(action: getAuthAction) {
     yield put(authActions.getAuthFailure());
   }
 }
+
 function* logOffAuthentication(action: setNoAuthAction) {
   try 
   {
@@ -48,3 +49,22 @@ function* logOffAuthentication(action: setNoAuthAction) {
     yield put(authActions.setNoAuthFailure());
   }
 }
+
+function* updateProfile(action: updateProfileAction) {
+  try
+  {
+    const { id, first_name, last_name, biography, avatar } = action.payload;
+    yield call(putApi, 'users', id, { first_name: first_name, last_name: last_name, biography: biography, avatar: avatar });
+
+    const { data } = yield call(fetchApi, `users/${id}`);
+    console.log(data);
+    yield put(authActions.updateProfileSuccess(data))
+  }
+  catch (error)
+  {
+    console.log(error);
+    yield put(authActions.updateProfileFailure());
+  }
+}
+
+

@@ -7,6 +7,9 @@ export const GET_AUTH_BY_TOKEN = "GET_AUTH_BY_TOKEN";
 export const SET_NO_AUTH = "SET_NO_AUTH";
 export const SET_NO_AUTH_SUCCESS = "SET_NO_AUTH_SUCCESS";
 export const SET_NO_AUTH_FAILURE = "SET_NO_AUTH_FAILURE";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const UPDATE_PROFILE_SUCCESS = "UPDATE_PROFILE_SUCCESS";
+export const UPDATE_PROFILE_FAILURE = "UPDATE_PROFILE_FAILURE";
 
 export interface getAuthAction {
   type: typeof GET_AUTH
@@ -37,6 +40,24 @@ export interface getAuthByTokenAction {
   type: typeof GET_AUTH_BY_TOKEN,
 }
 
+export interface updateProfileAction {
+  type: typeof UPDATE_PROFILE
+  payload: {
+    id: string,
+    first_name?: string,
+    last_name?: string,
+    avatar?: string,
+    biography?: string,
+  }
+}
+export interface updateProfileSuccessAction {
+  type: typeof UPDATE_PROFILE_SUCCESS
+  payload: Users
+}
+export interface updateProfileFailureAction {
+  type: typeof UPDATE_PROFILE_FAILURE
+}
+
 export type AuthActionType =
   getAuthAction |
   getAuthSuccessAction |
@@ -44,7 +65,10 @@ export type AuthActionType =
   getAuthByTokenAction |
   setNoAuthAction |
   setNoAuthSuccessAction |
-  setNoAuthFailureAction;
+  setNoAuthFailureAction |
+  updateProfileAction |
+  updateProfileSuccessAction |
+  updateProfileFailureAction;
 
 export const authActions = {
   getAuth: ((credentials: any): getAuthAction => {
@@ -84,6 +108,29 @@ export const authActions = {
   setNoAuthFailure: ((): setNoAuthFailureAction => {
     return {
       type: SET_NO_AUTH_FAILURE
+    }
+  }),
+  updateProfile: ((user: {
+    id: string,
+    first_name?: string,
+    last_name?: string,
+    avatar?: string,
+    biography?: string,
+  }): updateProfileAction => {
+    return {
+      type: UPDATE_PROFILE,
+      payload: user
+    }
+  }),
+  updateProfileSuccess: ((user: Users): updateProfileSuccessAction => {
+    return {
+      type: UPDATE_PROFILE_SUCCESS,
+      payload: user
+    }
+  }),
+  updateProfileFailure: ((): updateProfileFailureAction => {
+    return {
+      type: UPDATE_PROFILE_FAILURE
     }
   })
 };
