@@ -123,7 +123,7 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ item, level }) => {
                         } : {}
                 }
             >
-                {item.icon && (
+                {(item.icon && level === 0) && (
                     <ListItemIcon style={{ color: theme.palette.primary.contrastText }}>
                         {item.icon}
                     </ListItemIcon>
@@ -134,29 +134,35 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ item, level }) => {
                         flexDirection="row"
                     >
                         {/* Scrollbar pour pouvoir scroller le menu  */}
-                        <Box style={
+                        <Box display="flex" flexDirection='row' justifyContent="space-evenly" style={
                             isSelected && level !== 0
                                 ? {
                                     background: `linear-gradient(0.65turn,${theme.palette.secondary.dark},${theme.palette.secondary.light})`,
-                                    borderRadius: "15px",
+                                    borderRadius: "20px",
                                     padding: theme.spacing(0, 2, 0, 2)
                                 } : {
                                     padding: theme.spacing(0, 2, 0, 2)
                                 }
                         }
                         >
+                            {(level !== 0) && (
+                                <ListItemIcon style={{ color: theme.palette.primary.contrastText }}>
+                                    {item.icon && item.icon}
+                                </ListItemIcon>
+                            )}
                             <Typography
                                 variant="body2"
                                 style={
                                     level === 0
-                                        ? { color: theme.palette.primary.contrastText, fontWeight: "bold", textShadow: `0px 0px 10px black` }
-                                        : { color: theme.palette.primary.contrastText, fontWeight: "normal", textShadow: `0px 0px 10px black` }
+                                        ? { color: theme.palette.primary.contrastText, fontWeight: "bold", textShadow: `0px 0px 5px #000000` }
+                                        : { color: theme.palette.primary.contrastText, fontWeight: "normal", textShadow: `0px 0px 3px #000000` }
                                 }>
                                 {item.title}
                             </Typography>
                         </Box>
 
                         {item.children && item.children.length && (!open ? <ExpandMore /> : <ExpandLess />)}
+
                     </Box>
                 </ListItemText>
 

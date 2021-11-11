@@ -77,7 +77,7 @@ const theme = createTheme(adaptV4Theme({
     MuiTypography: {
       root: {
         fontFamily: [
-          'Mochiy Pop P One',
+          'Roboto',
           'sans-serif',
         ].join(','),
       },
@@ -128,7 +128,6 @@ const theme = createTheme(adaptV4Theme({
       },
     },
     MuiCheckbox: {
-      root: {},
       colorSecondary: {
         color: primaryColor,
         '&$checked': {

@@ -36,7 +36,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   };
 
   return (
-    <Box display="block" width="100vw">
+    <Box display="block" width="100vw" height='100vh'>
       <Box width="100%" height="100%" marginTop={topbarHeight} display="flex" flexDirection="column" margin={0} padding={0}>
         <Drawer anchor="left" PaperProps={{
           style: {
@@ -59,9 +59,9 @@ const Layout: React.FC<LayoutProps> = (props) => {
         }} open={authOpen} onClose={() => setAuthOpen(false)}>
           <Login />
         </Drawer>
-        <Box position="fixed"><TopBar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} authOpen={authOpen} setAuthOpen={setAuthOpen} mobile={mobile} /></Box>
+        <Box position="fixed" zIndex={500} boxShadow={"0px 3px 3px rgba(0,0,0,0.4)"}><TopBar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} authOpen={authOpen} setAuthOpen={setAuthOpen} mobile={mobile} /></Box>
         <Box display="flex" flexDirection="row" width="100%" justifyContent="center">
-          <Box display="flex" flexDirection="column" width="80%" alignItems="center" alignSelf="center" justifyItems="center" >
+          <Box display="flex" marginTop={`${topbarHeight}px`} flexDirection="column" width="80%" alignItems="center" alignSelf="center" justifyItems="center" >
             {props.children}
           </Box>
         </Box>
