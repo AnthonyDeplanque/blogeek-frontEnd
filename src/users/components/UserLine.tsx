@@ -44,14 +44,64 @@ const UserLine: React.FC<UserLineProps> = (props) => {
   };
 
   return (
-    <Box padding={theme.spacing(1)} width="100%" display="grid" style={{ gridTemplateColumns: mobile ? "1fr" : ".5fr .1fr 1fr .1fr 1fr .1fr .5fr" }}>
-      <Box display="flex" flexDirection="row" alignItems="center" justifyContent="flex-start"><Typography>{user.nick_name}</Typography></Box>
-      {!mobile && <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center"><Typography>{BULLET}</Typography></Box>}
-      <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center"><Typography>{user.email}</Typography></Box>
-      {!mobile && <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center"><Typography>{BULLET}</Typography></Box>}
-      <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center"><Typography>{formatDate(user.inscription_time)}</Typography></Box>
-      {!mobile && <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center"><Typography>{BULLET}</Typography></Box>}
-      <Box display="flex" flexDirection="row" alignItems="center" justifyContent="flex-end"><Box display="flex" flexDirection="row">{user.roles && <Typography>{roleDisplayer(user.roles as ROLE[])}</Typography>}</Box></Box>
+    <Box
+      padding={theme.spacing(1)}
+      width="100%"
+      display="grid"
+      style={{ gridTemplateColumns: mobile ? "1fr" : ".5fr .1fr 1fr .1fr 1fr .1fr .5fr" }}>
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="flex-start">
+        <Typography>{user.nick_name}</Typography>
+      </Box>
+      {!mobile && <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center">
+        <Typography>{BULLET}</Typography>
+      </Box>}
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center">
+        <Typography>{user.email}</Typography>
+      </Box>
+      {!mobile && <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center">
+        <Typography>{BULLET}</Typography>
+      </Box>}
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center">
+        <Typography>{formatDate(user.inscription_time)}</Typography>
+      </Box>
+      {!mobile && <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center">
+        <Typography>{BULLET}</Typography>
+      </Box>}
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="flex-end">
+        <Box
+          display="flex"
+          flexDirection="row">
+          {user.roles && <Typography>{roleDisplayer(user.roles as ROLE[])}</Typography>}
+        </Box>
+      </Box>
     </Box>
   )
 }
