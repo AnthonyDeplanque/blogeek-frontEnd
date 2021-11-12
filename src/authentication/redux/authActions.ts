@@ -10,6 +10,9 @@ export const SET_NO_AUTH_FAILURE = "SET_NO_AUTH_FAILURE";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const UPDATE_PROFILE_SUCCESS = "UPDATE_PROFILE_SUCCESS";
 export const UPDATE_PROFILE_FAILURE = "UPDATE_PROFILE_FAILURE";
+export const CREATE_PROFILE = "CREATE_PROFILE";
+export const CREATE_PROFILE_SUCCESS = "CREATE_PROFILE_SUCCESS";
+export const CREATE_PROFILE_FAILURE = "CREATE_PROFILE_FAILURE";
 
 export interface getAuthAction {
   type: typeof GET_AUTH
@@ -58,6 +61,19 @@ export interface updateProfileFailureAction {
   type: typeof UPDATE_PROFILE_FAILURE
 }
 
+export interface createProfileAction {
+  type: typeof CREATE_PROFILE
+  payload: { nick_name: string, email: string, password: string }
+}
+export interface createProfileSuccessAction {
+  type: typeof CREATE_PROFILE_SUCCESS
+  payload: Users
+}
+export interface createProfileFailureAction {
+  type: typeof CREATE_PROFILE_FAILURE
+  payload: any
+}
+
 export type AuthActionType =
   getAuthAction |
   getAuthSuccessAction |
@@ -68,7 +84,10 @@ export type AuthActionType =
   setNoAuthFailureAction |
   updateProfileAction |
   updateProfileSuccessAction |
-  updateProfileFailureAction;
+  updateProfileFailureAction |
+  createProfileAction |
+  createProfileSuccessAction |
+  createProfileFailureAction;
 
 export const authActions = {
   getAuth: ((credentials: any): getAuthAction => {
@@ -131,6 +150,24 @@ export const authActions = {
   updateProfileFailure: ((): updateProfileFailureAction => {
     return {
       type: UPDATE_PROFILE_FAILURE
+    }
+  }),
+  createProfile: ((credentials: { nick_name: string, email: string, password: string }): createProfileAction => {
+    return {
+      type: CREATE_PROFILE,
+      payload: credentials
+    }
+  }),
+  createProfileSuccess: ((user: Users): createProfileSuccessAction => {
+    return {
+      type: CREATE_PROFILE_SUCCESS,
+      payload: user
+    }
+  }),
+  createProfileFailure: ((error: any): createProfileFailureAction => {
+    return {
+      type: CREATE_PROFILE_FAILURE,
+      payload: error
     }
   })
 };

@@ -2,7 +2,8 @@ import { useTheme } from "@mui/system"
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import authActions from "../../authentication/redux/authActions";
-import { TextField, Box, Button } from "@mui/material";
+import { TextField, Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 interface UserLoginProps {
 
@@ -24,7 +25,9 @@ const UserLogin: React.FC<UserLoginProps> = (props) => {
       </Box>
       <Box padding={theme.spacing(2)} width="100%" display="flex" flexDirection="row" justifyContent="center">
         <Button variant="contained" onClick={handleSubmit}>LogIn !</Button></Box>
-
+      <Box display='flex' flexDirection="column" justifyContent='center' alignItems="center">
+        <Link style={{ color: theme.palette.primary.light, textDecoration: "none" }} to="/inscription"><Typography variant="caption">Pas encore de compte ? s'inscrire</Typography></Link>
+      </Box>
     </Box>)
 
 }

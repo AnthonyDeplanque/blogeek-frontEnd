@@ -1,6 +1,6 @@
 import { all, call, put, takeLatest } from "@redux-saga/core/effects";
 import { fetchApi, postApi, putApi } from "../../utils/axiosApi";
-import authActions, { getAuthAction, GET_AUTH, GET_AUTH_BY_TOKEN, setNoAuthAction, SET_NO_AUTH, updateProfileAction, UPDATE_PROFILE } from "./authActions";
+import authActions, { createProfileAction, CREATE_PROFILE, getAuthAction, GET_AUTH, GET_AUTH_BY_TOKEN, setNoAuthAction, SET_NO_AUTH, updateProfileAction, UPDATE_PROFILE } from "./authActions";
 
 export function* authSaga() {
   yield all([
@@ -8,6 +8,7 @@ export function* authSaga() {
     takeLatest(SET_NO_AUTH, logOffAuthentication),
     takeLatest(GET_AUTH_BY_TOKEN, getAuthenticationByToken),
     takeLatest(UPDATE_PROFILE, updateProfile),
+    takeLatest(CREATE_PROFILE, createUser),
   ]);
 }
 
@@ -58,12 +59,25 @@ function* updateProfile(action: updateProfileAction) {
 
     const { data } = yield call(fetchApi, `users/${id}`);
     console.log(data);
-    yield put(authActions.updateProfileSuccess(data))
+    yield put(authActions.updateProfileSuccess(data));
   }
   catch (error)
   {
     console.log(error);
     yield put(authActions.updateProfileFailure());
+  }
+}
+function* createUser(action: createProfileAction) {
+  try
+  {
+    const { data } = yield call(postApi, 'users', action.payload);
+    console.log(data);
+    yield put(authActions.createProfileSuccess(data));
+  }
+  catch (error)
+  {
+    console.log(error);
+    yield put(authActions.createProfileFailure(error))
   }
 }
 

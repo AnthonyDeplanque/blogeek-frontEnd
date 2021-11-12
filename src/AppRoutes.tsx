@@ -16,6 +16,7 @@ const AppRoutes: React.FC<AppRoutesProps> = (props) => {
       <Route exact path="/articles"><ArticlesList /></Route>
       <Route exact path='/articles/post'> <PostArticle /> </Route>
       <Route exact path='/articles/:id'> <ArticleDetails /> </Route>
+      <Route exact path="/inscription">not yet implemented</Route>
       <Route exact path="/users"><UsersList /></Route>
       <Route exact path="/myProfile"><MyProfile /></Route>
     </Switch>
