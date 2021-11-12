@@ -6,7 +6,6 @@ export const fetchApi = (route: string) => {
     .then(res => res);
 }
 
-
 export const postApi = (route: string, data: any) => {
   return axios
     .post(
@@ -15,10 +14,15 @@ export const postApi = (route: string, data: any) => {
     .then(res => res);
 }
 
-
 export const putApi = (route: string, id: string, data: any) => {
   return axios
     .put(`${process.env.REACT_APP_API_ROUTE}${route}/${id}`,
       data)
+    .then(res => res);
+}
+
+export const deleteApi = (route: string, id: string) => {
+  return axios
+    .delete(`${process.env.REACT_APP_API_ROUTE}${route}/${id}`)
     .then(res => res);
 }

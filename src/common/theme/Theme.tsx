@@ -126,6 +126,9 @@ const theme = createTheme(adaptV4Theme({
         paddingTop: '0px !important',
         paddingBottom: '0px !important',
       },
+      outlined: {
+        backgroundColor: lightBackgroundColor
+      }
     },
     MuiCheckbox: {
       colorSecondary: {

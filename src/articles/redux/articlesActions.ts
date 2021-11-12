@@ -6,6 +6,9 @@ export const GET_ARTICLES_FAILURE = 'GET_ARTICLES_FAILURE';
 export const POST_ARTICLE = "POST_ARTICLE";
 export const POST_ARTICLE_SUCCESS = "POST_ARTICLE_SUCCESS";
 export const POST_ARTICLE_FAILURE = "POST_ARTICLE_FAILURE";
+export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const DELETE_ARTICLE_SUCCESS = "DELETE_ARTICLE_SUCCESS";
+export const DELETE_ARTICLE_FAILURE = "DELETE_ARTICLE_FAILURE";
 
 export interface getArticlesAction {
   type: typeof GET_ARTICLES;
@@ -31,13 +34,28 @@ export interface postArticleSuccessAction {
 export interface postArticleFailureAction {
   type: typeof POST_ARTICLE_FAILURE;
 }
+
+export interface deleteArticleAction {
+  type: typeof DELETE_ARTICLE;
+  payload: string;
+}
+export interface deleteArticleSuccessAction {
+  type: typeof DELETE_ARTICLE_SUCCESS;
+  payload: string;
+}
+export interface deleteArticleFailureAction {
+  type: typeof DELETE_ARTICLE_FAILURE;
+}
 export type ArticlesActionsType =
   getArticlesAction |
   getArticlesSuccessAction |
   getArticlesFailureAction |
   postArticleAction |
   postArticleSuccessAction |
-  postArticleFailureAction;
+  postArticleFailureAction |
+  deleteArticleAction |
+  deleteArticleSuccessAction |
+  deleteArticleFailureAction;
 
 export const articlesActions = {
   getArticles: ((): getArticlesAction => {
@@ -71,6 +89,23 @@ export const articlesActions = {
   postArticleFailure: ((): postArticleFailureAction => {
     return {
       type: POST_ARTICLE_FAILURE
+    }
+  }),
+  deleteArticle: ((id: string): deleteArticleAction => {
+    return {
+      type: DELETE_ARTICLE,
+      payload: id,
+    }
+  }),
+  deleteArticleSuccess: ((id: string): deleteArticleSuccessAction => {
+    return {
+      type: DELETE_ARTICLE_SUCCESS,
+      payload: id
+    }
+  }),
+  deleteArticleFailure: ((): deleteArticleFailureAction => {
+    return {
+      type: DELETE_ARTICLE_FAILURE
     }
   })
 };

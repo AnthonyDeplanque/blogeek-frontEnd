@@ -1,5 +1,6 @@
+import { CREATE_PROFILE_SUCCESS } from "../../authentication/redux/authActions";
 import ArticlesState from "../models/articleState";
-import { ArticlesActionsType, GET_ARTICLES_SUCCESS, POST_ARTICLE_SUCCESS, } from "./articlesActions";
+import { ArticlesActionsType, DELETE_ARTICLE_SUCCESS, GET_ARTICLES_SUCCESS, POST_ARTICLE_SUCCESS, } from "./articlesActions";
 
 const defaultState: ArticlesState | null = {
   data: undefined
@@ -15,6 +16,8 @@ export const articlesReducer = (state: ArticlesState = defaultState, action: Art
       };
     case POST_ARTICLE_SUCCESS:
       return { ...state, data: [...state.data, action.payload] };
+    case DELETE_ARTICLE_SUCCESS:
+      return { ...state, data: action.payload };
     default:
       return state;
   }
