@@ -24,6 +24,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
   const param: any = useParams();
   const { id } = param;
   const [deleteDisclaimer, setDeleteDisclaimer] = useState<boolean>(false);
+  const [deleted, setDeleted] = useState<boolean>(false);
   const theme = useTheme();
   const history = useHistory();
   const { data } = useTypedSelector((state: RootState) => state.articles)
@@ -39,18 +40,24 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
     } else
     {
       dispatch(articlesActions.getArticles());
-      history.goBack();
+      setDeleted(true);
     }
   }, [id])
 
   return (
-    <MainCard style={{ minHeight: "80vh" }} title={`${selectedArticle.title}`}>
+    selectedArticle ? <MainCard style={{ minHeight: "80vh" }} title={`${selectedArticle.title}`}>
+      {deleted && <Redirect exact to='/' />}
+
       {deleteDisclaimer &&
         <MainDialog onClose={() => setDeleteDisclaimer(false)} open={deleteDisclaimer}>
           <Box display='flex' flexDirection='row' justifyContent="center"> <Typography variant="body2">Etes vous sûrs de vouloir supprimer cet article ?</Typography></Box>
 
-          <Box> <Button variant="contained" onClick={() => dispatch(articlesActions.deleteArticle(id))}>valider</Button>
-            <Button variant="outlined" onClick={() => { setDeleteDisclaimer(false); history.goBack() }}>annuler</Button></Box>
+          <Box> <Button variant="contained" onClick={() => {
+            dispatch(articlesActions.deleteArticle(id));
+            setDeleted(true)
+          }
+          }>valider</Button>
+            <Button variant="outlined" onClick={() => { setDeleteDisclaimer(false); }}>annuler</Button></Box>
         </MainDialog>
       }
       <Box style={{ padding: theme.spacing(3), height: '100%' }} display="flex" flexDirection="column" justifyContent="space-between" alignItems="space-between">
@@ -79,6 +86,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
         </Box>
       </Box>
     </MainCard>
+      : <Typography> Aucun article ici...</Typography>
   )
 }
 
