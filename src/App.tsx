@@ -8,6 +8,7 @@ import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import { StylesProvider } from '@material-ui/core/styles';
 import Layout from './layouts/pages/Layout';
 import AppRoutes from './AppRoutes';
+import "./App.css";
 
 interface props { };
 const App: React.FC<props> = () => {
