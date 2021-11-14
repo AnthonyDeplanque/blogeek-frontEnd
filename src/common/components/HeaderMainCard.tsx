@@ -26,7 +26,10 @@ const HeaderMainCard: React.FC<HeaderMainCardProps> = (props) => {
       style={{
         color: darkBackgroundColor,
         //textShadow: `0px 0px 5px rgba(255,255,230,0.6)`,
-        background: `linear-gradient(0.15turn,${theme.palette.primary.light},${theme.palette.primary.dark})`,
+        background: `linear-gradient(0.15turn,${theme.palette.primary.light}99,${theme.palette.primary.dark}99)`,
+        backdropFilter: 'blur( 9px )',
+        borderRadius: "11px 11px 0 0",
+
         height: "70px",
         width: "100%",
         //   borderTopLeftRadius: cardRadius,

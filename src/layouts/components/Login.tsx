@@ -28,7 +28,9 @@ const Login: React.FC<LoginProps> = (props) => {
       style={{
         height: `100%`,
         width: "250px",
-        background: `linear-gradient(0.65turn,${lightDarkBackgroundColor},${darkBackgroundColor})`,
+        background: `linear-gradient(0.65turn,${lightDarkBackgroundColor}77,${darkBackgroundColor}77)`,
+        boxShadow: '0 8px 32px 0 rgba( 31,  135, 38, 0.37 )',
+        backdropFilter: 'blur( 9px )',
         borderRadius: borderRadius,
         paddingBottom: "100px",
         overflowY: "auto",

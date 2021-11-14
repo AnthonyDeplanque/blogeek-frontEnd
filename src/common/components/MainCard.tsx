@@ -1,6 +1,6 @@
 import { Box, useTheme } from '@mui/material';
 import React from 'react';
-import { cardRadius, darkBackgroundColor, lightDarkBackgroundColor } from '../theme/Theme';
+import { cardRadius, darkBackgroundColor, lightBackgroundColor, lightDarkBackgroundColor } from '../theme/Theme';
 import HeaderMainCard, { HeaderMainCardProps } from './HeaderMainCard';
 interface MainCardProps extends HeaderMainCardProps {
   title?: string;
@@ -15,7 +15,14 @@ const MainCard: React.FC<MainCardProps> = (props) => {
   return (
     <Box
       {...props}
-      style={{ ...style, background: `linear-gradient(0.65turn,${lightDarkBackgroundColor},${darkBackgroundColor})` }}
+      style={{
+        ...style,
+        background: `${darkBackgroundColor}77`,
+        boxShadow: '0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
+        backdropFilter: 'blur( 9px )',
+        border: `1px solid ${lightBackgroundColor}99`,
+        borderRadius: "11px"
+      }}
       display={props.display ? props.display : "flex"}
       flexDirection={props.flexDirection ? props.flexDirection : "column"}
       justifyContent={props.justifyContent ? props.justifyContent : "flex-start"}
