@@ -6,6 +6,7 @@ import ArticleDetails from "./articles/components/ArticleDetails";
 import UsersList from './users/pages/UsersList'
 import PostArticle from "./articles/pages/PostArticle";
 import MyProfile from "./authentication/components/MyProfile";
+import UserCreation from "./authentication/components/UserCreation";
 
 interface AppRoutesProps { };
 
@@ -16,7 +17,7 @@ const AppRoutes: React.FC<AppRoutesProps> = (props) => {
       <Route exact path="/articles"><ArticlesList /></Route>
       <Route exact path='/articles/post'> <PostArticle /> </Route>
       <Route exact path='/articles/:id'> <ArticleDetails /> </Route>
-      <Route exact path="/inscription">not yet implemented</Route>
+      <Route exact path="/inscription"><UserCreation /></Route>
       <Route exact path="/users"><UsersList /></Route>
       <Route exact path="/myProfile"><MyProfile /></Route>
     </Switch>

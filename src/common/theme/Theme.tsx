@@ -138,17 +138,35 @@ const theme = createTheme(adaptV4Theme({
         },
       },
     },
-    MuiInput: {
+
+    MuiInputBase: {
       root: {
-        border: `1px thin ${primaryContrastTextColor}`,
+        '$notchedOutline': {
+          border: `1px solid ${primaryContrastTextColor}`,
+        },
+
         borderRadius: "11px",
         borderColor: primaryContrastTextColor,
 
       },
     },
-    MuiOutlinedInput: {
+    MuiTextField: {
       root: {
-        border: `1px thin ${primaryContrastTextColor}`,
+        ':not($focused)': {
+          border: `1px solid ${primaryContrastTextColor}`
+        }
+      }
+    },
+
+    MuiOutlinedInput: {
+      notchedOutline: {
+        border: `1px solid ${primaryContrastTextColor}`,
+
+      },
+      root: {
+        '$:hover': {
+          border: `1px solid ${primaryContrastTextColor}`,
+        },
         borderRadius: "11px",
         borderColor: primaryContrastTextColor,
         position: 'relative',
