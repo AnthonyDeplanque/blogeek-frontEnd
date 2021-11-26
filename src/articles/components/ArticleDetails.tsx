@@ -81,8 +81,8 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
         </Box>
 
         <Box display="flex" flexDirection="row" justifyContent="flex-end">
-          <Button variant="contained" onClick={() => history.push('/articles')} > Retour</Button>
-          {(auth?.roles?.includes(ROLE.ROLE_ADMIN) || auth?.roles?.includes(ROLE.ROLE_MODERATOR)) && <Button variant="contained" color='error' onClick={() => setDeleteDisclaimer(true)}>Supprimer</Button>}
+          <Button style={{ margin: theme.spacing(1) }} variant="contained" onClick={() => history.push('/articles')}>Retour</Button>
+          {(auth?.roles?.includes(ROLE.ROLE_ADMIN) || auth?.roles?.includes(ROLE.ROLE_MODERATOR)) && <Button style={{ margin: theme.spacing(1) }} variant="contained" color='error' onClick={() => setDeleteDisclaimer(true)}>Supprimer</Button>}
         </Box>
       </Box>
     </MainCard>
