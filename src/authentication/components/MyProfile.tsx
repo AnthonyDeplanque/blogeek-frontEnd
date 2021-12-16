@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Users } from "../../Blogeek-library/models/Users";
 import AvatarDisplayer from "../../common/components/AvatarDisplayer";
+import Forbidden from "../../common/components/Forbidden";
 import Loading from "../../common/components/Loading";
 import MainCard from "../../common/components/MainCard";
 import MainDialog from "../../common/components/MainDialog";
@@ -78,7 +79,7 @@ const MyProfile: React.FC<MyProfileProps> = (props) => {
                 </Box>
             </MainCard >) : <Loading />
     )
-        : (<Typography>Une erreur est survenue</Typography>)
+        : (<Forbidden />)
 
 }
 export default MyProfile;

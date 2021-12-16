@@ -39,16 +39,20 @@ const UserCreation: React.FC<UserCreationProps> = (props) => {
     }
 
     const handleInscription = () => {
+        setEmailError(false);
+        setEmailTypeError(false);
+        setNickNameError(false);
         if (!email) {
             setEmailError(true)
         } else if (!validateEmail(email)) {
             setEmailTypeError(true)
         }
         if (!nick_name) { setNickNameError(true) }
-        else if (password && nick_name && email) {
+        else if (password && nick_name && email && !emailError && !emailTypeError && !nickNameError && passwordMatch) {
             dispatch(authActions.createProfile({ nick_name, email, password }));
-            history.push("/myProfile");
+            history.push('/myProfile');
         }
+
     };
 
 
@@ -86,7 +90,7 @@ const UserCreation: React.FC<UserCreationProps> = (props) => {
                         <Typography variant="subtitle2" style={{ color: passwordMatch ? 'transparent' : 'red', transition: ".2s ease-in-out" }}>Les mots de passe doivent être identiques !</Typography>
                     </Box>
                 </Box >
-                <Box><Button onClick={() => handleInscription()}>s'inscrire </Button></Box>
+                <Box><Button variant="contained" onClick={() => handleInscription()}>s'inscrire </Button></Box>
             </Box >
         </MainCard >
     )

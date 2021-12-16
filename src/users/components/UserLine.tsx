@@ -52,7 +52,7 @@ const UserLine: React.FC<UserLineProps> = (props) => {
                 flexDirection="row"
                 alignItems="center"
                 justifyContent="flex-start">
-                {auth?.roles?.includes(ROLE.ROLE_ADMIN)
+                {auth
                     ? <Link style={{ color: theme.palette.secondary.main, textDecoration: 'none', fontWeight: "bold" }} to={`/users/${user.id}`}>{user.nick_name}</Link>
                     : <Typography>{user.nick_name}</Typography>
                 }
