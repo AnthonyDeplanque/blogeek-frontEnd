@@ -48,9 +48,10 @@ function* logOffAuthentication(action: setNoAuthAction) {
 
 function* updateProfile(action: updateProfileAction) {
   const { id, first_name, last_name, biography, avatar } = action.payload;
+  const updatedData = { first_name, last_name, biography, avatar };
 
   try {
-    yield call(putApi, USERS_ROUTE, id, { first_name: first_name, last_name: last_name, biography: biography, avatar: avatar });
+    yield call(putApi, USERS_ROUTE, id, updatedData);
 
     const { data } = yield call(fetchApi, `${USERS_ROUTE}/${id}`);
     console.log(data);
@@ -61,6 +62,8 @@ function* updateProfile(action: updateProfileAction) {
     yield put(authActions.updateProfileFailure());
   }
 }
+
+
 function* createUser(action: createProfileAction) {
   try {
     const { data } = yield call(postApi, USERS_ROUTE, action.payload);

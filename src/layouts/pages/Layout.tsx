@@ -1,7 +1,6 @@
 
 import { Drawer, useMediaQuery, useTheme } from "@mui/material";
-import { Box, breakpoints } from "@mui/system";
-import Blogeek from '../../common/theme/blogeek.jpeg'
+import { Box } from "@mui/system";
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
@@ -26,8 +25,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
 
   const mobile: boolean = useMediaQuery(theme.breakpoints.down("md"));
   useEffect(() => {
-    if (!authentication)
-    {
+    if (!authentication) {
       dispatch(authActions.getAuthByToken())
     }
   }, [])

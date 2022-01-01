@@ -31,14 +31,12 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
   const auth = useTypedSelector((state: RootState) => state.authentication.data)
   const dispatch = useDispatch()
 
-  const [selectedArticle, setSelectedArticle] = useState<Articles>(data.filter((article: Articles) => article.id === id)[0]);
+  const [selectedArticle, setSelectedArticle] = useState<Articles>(data ? data.filter((article: Articles) => article.id === id)[0] : null);
 
   useEffect(() => {
-    if (data)
-    {
+    if (data) {
       setSelectedArticle(data.filter((article: Articles) => article.id === id)[0])
-    } else
-    {
+    } else {
       dispatch(articlesActions.getArticles());
       setDeleted(true);
     }

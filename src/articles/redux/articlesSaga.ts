@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import { ARTICLES_API_ROUTE, ARTICLES_ROUTE } from "../../Blogeek-library/config/apiRoutes";
+import { ARTICLES_ROUTE } from "../../Blogeek-library/config/apiRoutes";
 import { deleteApi, fetchApi, postApi } from "../../utils/axiosApi"
 import articlesActions, { deleteArticleAction, DELETE_ARTICLE, GET_ARTICLES, postArticleAction, POST_ARTICLE } from "./articlesActions"
 
@@ -37,7 +37,7 @@ function* postArticleIntoDatabase(action: postArticleAction) {
 
 function* deleteArticleFromDatabase(action: deleteArticleAction) {
   try {
-    let { data } = yield call(deleteApi, ARTICLES_API_ROUTE, action.payload);
+    let { data } = yield call(deleteApi, ARTICLES_ROUTE, action.payload);
     console.log(data);
     yield put(articlesActions.deleteArticleSuccess(action.payload));
     yield put(articlesActions.getArticles())
