@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest } from "@redux-saga/core/effects";
-import { AUTHENTICATION_ROUTE, USERS_API_ROUTE, USERS_ROUTE } from "../../Blogeek-library/config/apiRoutes";
+import { AUTHENTICATION_ROUTE, USERS_ROUTE } from "../../Blogeek-library/config/apiRoutes";
 import { fetchApi, postApi, putApi } from "../../utils/axiosApi";
 import authActions, { createProfileAction, CREATE_PROFILE, getAuthAction, GET_AUTH, GET_AUTH_BY_TOKEN, setNoAuthAction, SET_NO_AUTH, updateProfileAction, UPDATE_PROFILE } from "./authActions";
 

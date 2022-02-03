@@ -1,6 +1,6 @@
 import { Box, useTheme } from '@mui/material';
 import React from 'react';
-import { cardRadius, darkBackgroundColor, lightBackgroundColor, lightDarkBackgroundColor } from '../theme/Theme';
+import { darkBackgroundColor, lightBackgroundColor } from '../theme/Theme';
 import HeaderMainCard, { HeaderMainCardProps } from './HeaderMainCard';
 interface MainCardProps extends HeaderMainCardProps {
   title?: string;

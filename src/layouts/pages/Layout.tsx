@@ -28,6 +28,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     if (!authentication) {
       dispatch(authActions.getAuthByToken())
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const onItemClicked = (path: string) => {

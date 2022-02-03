@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import authActions from "../../authentication/redux/authActions";
 import { Users } from '../../Blogeek-library/models/Users';
 import { useHistory } from "react-router";
-import { formatDate } from "../../common/services/formatDate";
 import AvatarDisplayer from "../../common/components/AvatarDisplayer";
 
 

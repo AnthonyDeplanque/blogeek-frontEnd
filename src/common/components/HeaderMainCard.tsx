@@ -3,7 +3,7 @@ import { Clear } from '@material-ui/icons';
 import { BoxProps, useTheme } from '@mui/material';
 import { Box } from '@mui/material';
 import React from 'react';
-import { cardRadius, darkBackgroundColor } from '../theme/Theme';
+import { darkBackgroundColor } from '../theme/Theme';
 export interface HeaderMainCardProps extends BoxProps {
   title?: string;
   onClose?(): void;

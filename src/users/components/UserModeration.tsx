@@ -1,4 +1,4 @@
-import { Box, Button, Switch, Typography, useTheme } from "@mui/material";
+import { Box, Switch, Typography, useTheme } from "@mui/material";
 import { useHistory, useParams } from "react-router-dom";
 import { useTypedSelector } from "../../redux/rootReducer";
 import RootState from "../../redux/rootState";
@@ -58,6 +58,9 @@ const UserModeration: React.FC<UserModerationProps> = (props) => {
                     }
                     )
                     }
+                </Box>
+                <Box>
+                    {user?.biography && <Typography >{user.biography}</Typography>}
                 </Box>
                 <Box display="flex" flexDirection="column">
                     <Box display="flex" alignItems='center' flexDirection="row"><Typography style={{ margin: theme.spacing(1) }}>email</Typography><Typography>{user.email}</Typography></Box>

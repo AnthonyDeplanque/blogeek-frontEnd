@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CREATE_PROFILE_SUCCESS } from "../../authentication/redux/authActions";
 import ArticlesState from "../models/articleState";
 import { ArticlesActionsType, DELETE_ARTICLE_SUCCESS, GET_ARTICLES_SUCCESS, POST_ARTICLE_SUCCESS, } from "./articlesActions";
@@ -7,8 +8,7 @@ const defaultState: ArticlesState | null = {
 }
 
 export const articlesReducer = (state: ArticlesState = defaultState, action: ArticlesActionsType): ArticlesState => {
-  switch (action.type)
-  {
+  switch (action.type) {
     case GET_ARTICLES_SUCCESS:
       return {
         ...state,

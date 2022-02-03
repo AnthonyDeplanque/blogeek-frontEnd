@@ -1,4 +1,4 @@
-import { Box, Divider } from "@material-ui/core"
+import { Divider } from "@material-ui/core"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import MainCard from "../../common/components/MainCard"
@@ -18,6 +18,7 @@ const UsersList: React.FC<UsersListProps> = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(usersActions.getUsers());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

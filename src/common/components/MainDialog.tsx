@@ -1,10 +1,8 @@
 import { DialogProps, useTheme } from '@mui/material';
 
 import * as React from 'react';
-import { cardRadius, darkBackgroundColor } from '../theme/Theme';
+import { darkBackgroundColor } from '../theme/Theme';
 import HeaderMainCard from './HeaderMainCard';
-import MainCard from './MainCard';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
@@ -16,7 +14,7 @@ interface MainDialogProps extends DialogProps {
   open: boolean;
   onClose?: () => void;
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;

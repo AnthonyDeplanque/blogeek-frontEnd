@@ -1,3 +1,4 @@
+
 import { Typography } from '@material-ui/core';
 import { Button } from '@mui/material';
 import { Box, useTheme } from '@mui/system';
@@ -40,6 +41,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = (props) => {
       dispatch(articlesActions.getArticles());
       setDeleted(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   return (
