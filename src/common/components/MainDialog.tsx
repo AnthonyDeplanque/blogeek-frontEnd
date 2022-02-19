@@ -1,7 +1,6 @@
 import { DialogProps, useTheme } from '@mui/material';
 
 import * as React from 'react';
-import { darkBackgroundColor } from '../theme/Theme';
 import HeaderMainCard from './HeaderMainCard';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
@@ -29,7 +28,7 @@ const MainDialog: React.FC<MainDialogProps> = (props) => {
   const { title, style, open, onClose } = props;
   return (
     <Dialog
-      // TransitionComponent={Transition}
+
       open={open}
       onClose={onClose}
       style={{
@@ -44,14 +43,11 @@ const MainDialog: React.FC<MainDialogProps> = (props) => {
       <HeaderMainCard title={title} onClose={onClose}></HeaderMainCard>
       <Box display="flex"
         flexDirection="column"
-        justifyContent="flex-start"
-        margin={theme.spacing(2)}
-        width="90%"
         height="100%"
         borderRadius='11px'
         style={{
           ...style,
-          background: `${darkBackgroundColor}77`,
+          // background: `${darkBackgroundColor}77`,
           backdropFilter: 'blur( 9px )',
           borderRadius: "11px"
         }} >{props.children}</Box>

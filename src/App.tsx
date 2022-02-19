@@ -9,6 +9,7 @@ import { StylesProvider } from '@material-ui/core/styles';
 import Layout from './layouts/pages/Layout';
 import AppRoutes from './AppRoutes';
 import "./App.css";
+import LoadingComponent from './loading/components/LoadingComponent';
 
 interface props { };
 const App: React.FC<props> = () => {

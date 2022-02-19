@@ -12,6 +12,7 @@ import RootState from "../../redux/rootState";
 import '../../common/assets/style.css';
 import Navbar from "../components/NavBar";
 import TopBar from "../components/TopBar";
+import LoadingComponent from "../../loading/components/LoadingComponent";
 
 interface LayoutProps { };
 export const topbarHeight = 90
@@ -20,6 +21,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const [navBarOpen, setNavBarOpen] = useState<boolean>(false);
   const [authOpen, setAuthOpen] = useState<boolean>(false);
   const authentication = useTypedSelector((state: RootState) => state.authentication.data)
+  const loading = useTypedSelector((state: RootState) => state.loading.data)
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -60,7 +62,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
           <Login />
         </Drawer>
         <Box position="fixed" zIndex={500} boxShadow={"0px 3px 3px rgba(0,0,0,0.4)"}><TopBar navBarOpen={navBarOpen} setNavBarOpen={setNavBarOpen} authOpen={authOpen} setAuthOpen={setAuthOpen} mobile={mobile} /></Box>
-
+        {loading && <LoadingComponent />}
         <Box display="flex" marginTop={`${topbarHeight}px`} flexDirection="column" width="100%" alignItems="center" overflow="auto" alignSelf="center" justifyItems="center" >
           {props.children}
         </Box>

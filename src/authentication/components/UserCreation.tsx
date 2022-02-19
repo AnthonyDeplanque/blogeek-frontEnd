@@ -1,5 +1,5 @@
 
-import { Box, Button, TextField, Typography, useTheme } from "@mui/material";
+import { Box, Button, TextField, useTheme } from "@mui/material";
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -61,33 +61,32 @@ const UserCreation: React.FC<UserCreationProps> = (props) => {
         <MainCard title="S'inscrire">
             <Box display="flex" flexDirection='column' margin={theme.spacing(1)}>
                 <Box display="flex" flexDirection='row' alignItems="center" margin={theme.spacing(1)} padding={theme.spacing(1)}>
-                    <Typography>Pseudo</Typography>
+
                     <Box display="flex" flexDirection="column">
 
-                        <TextField style={{ margin: theme.spacing(0, 1, 0, 1) }} name='nick_name' onChange={(e) => setNick_name(e.target.value)} />
-                        <Box display="flex" flexDirection='row' justifyContent="flex-end">
-                            <Typography variant="subtitle2" style={{ color: !nickNameError ? 'transparent' : 'red', transition: ".2s ease-in-out" }}>Il vous faut un pseudonyme !</Typography>
-                        </Box>
+                        <TextField
+                            label='Pseudonyme'
+                            style={{ margin: theme.spacing(0, 1, 0, 1) }}
+                            name='nick_name'
+                            error={nickNameError}
+                            helperText={nickNameError && "Il vous faut un pseudonyme"}
+                            onChange={(e) => setNick_name(e.target.value)} />
                     </Box>
-
-                    <Typography>E-mail</Typography>
                     <Box display="flex" flexDirection="column">
-                        <TextField style={{ margin: theme.spacing(0, 1, 0, 1) }} type="email" name='email' onChange={(e) => setEmail(e.target.value)} />
-                        <Box display="flex" flexDirection='row' justifyContent="flex-end">
-                            <Box display="flex" flexDirection="column">
-                                <Typography variant="subtitle2" style={{ color: !emailError ? 'transparent' : 'red', transition: ".2s ease-in-out" }}>il vous faut un E-mail !</Typography>
-                                <Typography variant="subtitle2" style={{ color: !emailTypeError ? 'transparent' : 'red', transition: ".2s ease-in-out" }}>Le format de l'Email n'est pas correct !</Typography>
-                            </Box>
-                        </Box>
+                        <TextField
+                            label="E-Mail"
+                            style={{ margin: theme.spacing(0, 1, 0, 1) }}
+                            type="email"
+                            name='email'
+                            error={emailError || emailTypeError}
+                            helperText={(emailError || emailTypeError) && "Il vous faut un Email valide"}
+                            onChange={(e) => setEmail(e.target.value)} />
                     </Box>
                 </Box>
                 <Box display='flex' flexDirection='column' alignItems="flex-start" margin={theme.spacing(1)} padding={theme.spacing(1)}>
-                    <Box display='flex' flexDirection='row' alignItems="center"><Typography>Mot de passe</Typography>
-                        <TextField name='password' type='password' style={{ margin: theme.spacing(0, 1, 0, 1) }} onChange={(e) => setPassword1(e.target.value)} />
-                        <TextField name='password' type='password' style={{ margin: theme.spacing(0, 1, 0, 1) }} onChange={(e) => setPassword2(e.target.value)} />
-                    </Box>
-                    <Box display="flex" flexDirection='row' justifyContent="flex-end">
-                        <Typography variant="subtitle2" style={{ color: passwordMatch ? 'transparent' : 'red', transition: ".2s ease-in-out" }}>Les mots de passe doivent être identiques !</Typography>
+                    <Box display='flex' flexDirection='row' alignItems="center">
+                        <TextField name='password' error={passwordMatch} helperText={passwordMatch && "Les mots de passe "} type='password' style={{ margin: theme.spacing(0, 1, 0, 1) }} onChange={(e) => setPassword1(e.target.value)} />
+                        <TextField name='password' error={passwordMatch} helperText={passwordMatch && "doivent être identiques !"} type='password' style={{ margin: theme.spacing(0, 1, 0, 1) }} onChange={(e) => setPassword2(e.target.value)} />
                     </Box>
                 </Box >
                 <Box><Button variant="contained" onClick={() => handleInscription()}>s'inscrire </Button></Box>

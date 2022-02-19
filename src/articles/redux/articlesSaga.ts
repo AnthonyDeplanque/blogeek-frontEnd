@@ -1,5 +1,6 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { ARTICLES_ROUTE } from "../../Blogeek-library/config/apiRoutes";
+import loadingActions from "../../loading/redux/LoadingActions";
 import { deleteApi, fetchApi, postApi } from "../../utils/axiosApi"
 import articlesActions, { deleteArticleAction, DELETE_ARTICLE, GET_ARTICLES, postArticleAction, POST_ARTICLE } from "./articlesActions"
 
@@ -12,6 +13,7 @@ export function* articlesSaga() {
 }
 
 function* getArticlesFromDatabase() {
+  yield put(loadingActions.loading());
   try {
     let { data } = yield call(fetchApi, ARTICLES_ROUTE);
 
@@ -21,9 +23,11 @@ function* getArticlesFromDatabase() {
     console.log(error);
     yield put(articlesActions.getArticlesFailure());
   }
+  yield put(loadingActions.loaded());
 };
 
 function* postArticleIntoDatabase(action: postArticleAction) {
+  yield put(loadingActions.loading());
   try {
     let { data } = yield call(postApi, ARTICLES_ROUTE, action.payload);
     console.log(data);
@@ -33,9 +37,11 @@ function* postArticleIntoDatabase(action: postArticleAction) {
     console.log(error);
     yield put(articlesActions.postArticleFailure());
   }
+  yield put(loadingActions.loaded());
 }
 
 function* deleteArticleFromDatabase(action: deleteArticleAction) {
+  yield put(loadingActions.loading());
   try {
     let { data } = yield call(deleteApi, ARTICLES_ROUTE, action.payload);
     console.log(data);
@@ -46,4 +52,5 @@ function* deleteArticleFromDatabase(action: deleteArticleAction) {
     console.log(error);
     yield put(articlesActions.deleteArticleFailure());
   }
+  yield put(loadingActions.loaded());
 }
