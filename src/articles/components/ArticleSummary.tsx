@@ -23,7 +23,6 @@ const ArticleSummary: React.FC<ArticleSummaryProps> = (props) => {
 
   return (<MainCard title={article.title}>
 
-
     <Box style={{ padding: theme.spacing(3) }} display="flex" flexDirection="column" justifyContent="space-between" alignItems="space-between">
       <Box padding={theme.spacing(1, 0, 1, 0)}>
         <Typography variant="h5">{article.subtitle}</Typography>

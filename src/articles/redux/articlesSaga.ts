@@ -16,7 +16,6 @@ function* getArticlesFromDatabase() {
   yield put(loadingActions.loading());
   try {
     let { data } = yield call(fetchApi, ARTICLES_ROUTE);
-
     yield put(articlesActions.getArticlesSuccess(data));
   }
   catch (error) {
